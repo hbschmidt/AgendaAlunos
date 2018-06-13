@@ -6,8 +6,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -41,7 +43,7 @@ public class FormularioActivity extends AppCompatActivity {
             helper.preencheFormulario(aluno);
         }
 
-        Button btnFoto = findViewById(R.id.formulario_botao_foto);
+        FloatingActionButton btnFoto = findViewById(R.id.formulario_botao_foto);
         btnFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,8 +53,11 @@ public class FormularioActivity extends AppCompatActivity {
                 File arquivoFoto = new File(caminhoFoto);
                 intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(arquivoFoto));
                 startActivityForResult(intentCamera, CODIGO_CAMERA);
+
             }
         });
+
+        Log.e("caminhoFoto", "onClick: "+ caminhoFoto);
 
 
     }
